@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Nadiya ❤️</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: white;
+      font-size: 3em;
+      opacity: 0;
+      transition: 0.5s;
+      text-align: center;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #e63950;
+      transform: scale(1.1);
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 20px;
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { top: -10%; opacity: 1; }
+      100% { top: 110%; opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="showLove()">Klik Ini❤️</button>
+  <h1 id="loveText">I LOVE YOU,<br>NADIYA MYPACARR 💖</h1>
+
+  <!-- Lagu -->
+  <audio id="loveSong" src="lagu.mp3"></audio>
+
+  <script>
+    function showLove() {
+      const text = document.getElementById("loveText");
+      const song = document.getElementById("loveSong");
+
+      // tampilkan teks
+      text.style.opacity = 1;
+      text.style.transform = "scale(1.2)";
+
+      setTimeout(() => {
+        text.style.transform = "scale(1)";
+      }, 200);
+
+      // play lagu
+      song.currentTime = 0;
+      song.play().catch(() => {});
+
+      // efek hati jatuh
+      for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000);
+      }
+    }
+  </script>
+
+</body>
+</html>
